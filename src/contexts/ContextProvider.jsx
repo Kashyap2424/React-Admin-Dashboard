@@ -11,9 +11,26 @@ const InitialState = {
 
 export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
+  const [isClicked, setIsCliecked] = useState(InitialState);
+  const [screenSize, setScreenSize] = useState(undefined);
+
+  // handling clickevents of navbar
+  const handleClick = (clicked) => {
+    setIsCliecked({ ...InitialState, [clicked]: true });
+  };
 
   return (
-    <StateContext.Provider value={{ activeMenu, setActiveMenu }}>
+    <StateContext.Provider
+      value={{
+        activeMenu,
+        setActiveMenu,
+        isClicked,
+        setIsCliecked,
+        handleClick,
+        screenSize,
+        setScreenSize,
+      }}
+    >
       {children}
     </StateContext.Provider>
   );
